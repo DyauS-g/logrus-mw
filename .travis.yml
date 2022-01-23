@@ -1,0 +1,16 @@
+language: go
+
+go:
+  - 1.7
+
+before_install:
+  - go get github.com/golang/lint/golint
+
+install:
+  - go get -d -v ./...
+  - go get github.com/bakins/test-helpers
+
+script:
+  - go test -v ./...
+  - go vet ./...
+  - $HOME/gopath/bin/golint ./...
